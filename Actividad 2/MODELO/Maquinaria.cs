@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Actividad_2.MODELO
 {
-    internal abstract class Maquinaria
+    public abstract class Maquinaria: Comparable
     {
         protected double valor;
         protected int vidaUtil;
         protected String marca;
-        protected String descricion;
+        protected String descripcion;
+        protected Persona encargado;
 
        public Maquinaria(double valor, int vidaUtil, string marca, string descricion)
         {
@@ -22,5 +23,24 @@ namespace Actividad_2.MODELO
         }
 
         public abstract String calcularDepreciacion();
+
+        public String getDescripcion() {return descripcion;}
+        public double getValor() {return valor; }
+
+
+        public String consultarNombreEncargado() 
+        {
+            return encargado.getNombre();
+        }
+
+        public bool menorQue(Comparable obj)
+        {
+            return this.valor<((Maquinaria)obj).getValor();
+        }
+
+        public void asignarEncargado(Persona obj) 
+        {
+            encargado = obj;
+        }
     }
 }
